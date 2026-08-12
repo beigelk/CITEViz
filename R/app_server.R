@@ -20,7 +20,7 @@ app_server <- function(input, output, session) {
     # set max file upload size to 3gb (default is only 5mb) since rds files can be really big
     # takes in an integer argument for max filesize in megabytes
     # to improve: set max file upload size based on user's hardware limitations?
-    options(shiny.maxRequestSize = 3000 * 1024^2)
+    options(shiny.maxRequestSize = 30000 * 1024^2)
 
     # Your application server logic
 
