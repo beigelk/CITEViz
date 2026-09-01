@@ -602,24 +602,24 @@ app_server <- function(input, output, session) {
             })
 
             output$x_feature <- renderUI({
-                req(input$Assay)
-                assay_name <- input$Assay
-                menu_choices <- get_choices(
-                    category = NULL,
-                    input_data_type(),
-                    myso(),
-                    input_file_df,
-                    assay_name
-                )
-                selectInput(
+                selectizeInput(
                     inputId = "x_feature",
                     label = "Choose x-axis feature:",
-                    choices = menu_choices,
-                    selected = menu_choices[1]
+                    choices = NULL,
+                    selected = NULL
                 )
             })
 
             output$y_feature <- renderUI({
+                selectizeInput(
+                    inputId = "y_feature",
+                    label = "Choose y-axis feature:",
+                    choices = NULL,
+                    selected = NULL
+                )
+            })
+
+            observeEvent(input$Assay, {
                 req(input$Assay)
                 assay_name <- input$Assay
                 menu_choices <- get_choices(
@@ -629,11 +629,19 @@ app_server <- function(input, output, session) {
                     input_file_df,
                     assay_name
                 )
-                selectInput(
-                    inputId = "y_feature",
-                    label = "Choose y-axis feature:",
+                updateSelectizeInput(
+                    session = session,
+                    inputId = "x_feature",
                     choices = menu_choices,
-                    selected = menu_choices[2]
+                    selected = menu_choices[1],
+                    server = TRUE
+                )
+                updateSelectizeInput(
+                    session = session,
+                    inputId = "y_feature",
+                    choices = menu_choices,
+                    selected = menu_choices[2],
+                    server = TRUE
                 )
             })
 
@@ -922,24 +930,24 @@ app_server <- function(input, output, session) {
             })
 
             output$x_feature_bg <- renderUI({
-                req(input$Assay_bg)
-                assay_name <- input$Assay_bg
-                menu_choices <- get_choices(
-                    category = NULL,
-                    input_data_type(),
-                    myso(),
-                    input_file_df,
-                    assay_name
-                )
-                selectInput(
+                selectizeInput(
                     inputId = "x_feature_bg",
                     label = "Choose x-axis feature:",
-                    choices = menu_choices,
-                    selected = menu_choices[1]
+                    choices = NULL,
+                    selected = NULL
                 )
             })
 
             output$y_feature_bg <- renderUI({
+                selectizeInput(
+                    inputId = "y_feature_bg",
+                    label = "Choose y-axis feature:",
+                    choices = NULL,
+                    selected = NULL
+                )
+            })
+
+            observeEvent(input$Assay_bg, {
                 req(input$Assay_bg)
                 assay_name <- input$Assay_bg
                 menu_choices <- get_choices(
@@ -949,11 +957,19 @@ app_server <- function(input, output, session) {
                     input_file_df,
                     assay_name
                 )
-                selectInput(
-                    inputId = "y_feature_bg",
-                    label = "Choose y-axis feature:",
+                updateSelectizeInput(
+                    session = session,
+                    inputId = "x_feature_bg",
                     choices = menu_choices,
-                    selected = menu_choices[2]
+                    selected = menu_choices[1],
+                    server = TRUE
+                )
+                updateSelectizeInput(
+                    session = session,
+                    inputId = "y_feature_bg",
+                    choices = menu_choices,
+                    selected = menu_choices[2],
+                    server = TRUE
                 )
             })
 
