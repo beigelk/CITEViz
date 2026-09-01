@@ -1054,7 +1054,6 @@ app_server <- function(input, output, session) {
                     plot_ly(count_data,
                         x = ~ count_data[, input$x_feature_bg], y = ~ count_data[, input$y_feature_bg],
                         customdata = rownames(count_data),
-                        mode = "markers",
                         color = rownames(count_data) %in% selected_cell_barcodes, # color cells by whether they're in the selection or not
                         colors = c("grey", "black")
                     ) %>%

@@ -241,7 +241,6 @@ gate_scatterplot <- function(
             x = ~ count_data[, input$x_feature],
             y = ~ count_data[, input$y_feature],
             customdata = rownames(count_data),
-            mode = "markers",
             source = "C") %>%
         add_histogram2dcontour(
             showscale = FALSE,
@@ -275,7 +274,6 @@ gate_scatterplot <- function(
             x = ~ count_data_subset[, input$x_feature],
             y = ~ count_data_subset[, input$y_feature],
             customdata = rownames(count_data_subset),
-            mode = "markers",
             source = "C") %>%
         add_histogram2dcontour(
             showscale = FALSE, ncontours = 10, colorscale = gating_color_scale,
