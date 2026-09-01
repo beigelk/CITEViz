@@ -203,12 +203,12 @@ get_data_from_seurat <- function(category, seurat_object, input_file_df, assay_n
         # and transpose it so that colnames are RNAs/ADTs/etc and rownames are cell barcodes,
         # for consistency with the way assay data is accessed in the app server
         data <- t(as.data.frame(
-            SeuratObject::GetAssayData(
+            SeuratObject::LayerData(
                 object = seurat_object,
                 layer = "data",
                 assay = assay_name
             )
-        )[assay_data_to_get, ])
+        ))
     } else if (category == "reductions" & !is.null(reduction_name)) {
         # we need, at most, 3 reduction dimensions for plotting, so don't get more than 3 dimensions
         # if a reduction doesn't have 3 dimensions (i.e. if PCA data only contains PC1 and PC2),
